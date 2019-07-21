@@ -67,10 +67,10 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-if not DEBUG:
-    DATABASES = {'default': dj_database_url.config(engine='django_postgrespool')}
-    # DATABASES['default'] =  dj_database_url.config()
-    # DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+# if not DEBUG:
+#     DATABASES = {'default': dj_database_url.config(engine='django_postgrespool')}
+#     # DATABASES['default'] =  dj_database_url.config()
+#     # DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 
 DATABASE_POOL_ARGS = {
     'max_overflow': 10,
