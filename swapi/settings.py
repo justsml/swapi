@@ -49,7 +49,8 @@ ROOT_URLCONF = 'swapi.urls'
 WSGI_APPLICATION = 'swapi.wsgi.application'
 
 DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES['default'] = dj_database_url.config()
+DATABASES['default']['ENGINE'] = 'django_postgrespool'
 
 # DATABASES = {
 #     'default': {
