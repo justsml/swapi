@@ -49,7 +49,7 @@ ROOT_URLCONF = 'swapi.urls'
 WSGI_APPLICATION = 'swapi.wsgi.application'
 
 DATABASES = {}
-# DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config(ssl_require=True)
 # DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 # DATABASES = {'default': dj_database_url.config(engine='django_postgrespool')}
 
@@ -72,11 +72,11 @@ USE_TZ = True
 #     # DATABASES['default'] =  dj_database_url.config()
 #     # DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 
-DATABASE_POOL_ARGS = {
-    'max_overflow': 10,
-    'pool_size': 10,
-    'recycle': 300
-}
+# DATABASE_POOL_ARGS = {
+#     'max_overflow': 10,
+#     'pool_size': 10,
+#     'recycle': 300
+# }
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
