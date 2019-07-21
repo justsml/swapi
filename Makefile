@@ -1,3 +1,4 @@
+include .env
 
 install:
 	pip install -r requirements.txt
@@ -16,7 +17,7 @@ load_data:
 	python manage.py loaddata films.json
 
 serve:
-	python manage.py runserver
+	python manage.py runserver "0.0.0.0:${PORT}"
 
 dump_data:
 	python manage.py dumpdata resources.planet > resources/fixtures/planets.json --indent 4
