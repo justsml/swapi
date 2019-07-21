@@ -49,7 +49,7 @@ ROOT_URLCONF = 'swapi.urls'
 WSGI_APPLICATION = 'swapi.wsgi.application'
 
 DATABASES = {}
-DATABASES['default'] = dj_database_url.config(ssl_require=True)
+# DATABASES['default'] = dj_database_url.config(ssl_require=True)
 # DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 # DATABASES = {'default': dj_database_url.config(engine='django_postgrespool')}
 
