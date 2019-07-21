@@ -49,15 +49,16 @@ ROOT_URLCONF = 'swapi.urls'
 WSGI_APPLICATION = 'swapi.wsgi.application'
 
 DATABASES = {}
-DATABASES['default'] = dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+# DATABASES['default'] = dj_database_url.config()
+# DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+# DATABASES = {'default': dj_database_url.config(engine='django_postgrespool')}
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -67,8 +68,15 @@ USE_L10N = True
 USE_TZ = True
 
 if not DEBUG:
-    DATABASES['default'] =  dj_database_url.config()
-    DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+    DATABASES = {'default': dj_database_url.config(engine='django_postgrespool')}
+    # DATABASES['default'] =  dj_database_url.config()
+    # DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+
+DATABASE_POOL_ARGS = {
+    'max_overflow': 10,
+    'pool_size': 10,
+    'recycle': 300
+}
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -120,7 +128,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.AnonRateThrottle',
     ),
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '10000/day',
+        'anon': '250/hour',
     },
     'DEFAULT_FILTER_BACKENDS': (
         'rest_framework.filters.SearchFilter',
