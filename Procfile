@@ -1,1 +1,1 @@
-web: gunicorn swapi.wsgi --log-file -
+web: python manage.py runserver
