@@ -1,0 +1,12 @@
+apt-get update && apt-get dist-upgrade
+apt-get install -y bash python python-setuptools python-pip build-essential imagemagick-6-common install-info gcc-7-base make manpages gnupg gnupg-utils git autoconf automake gettext keychain libmemcached-dev zlib1g-dev
+
+/bin/bash
+
+cd /app
+make install
+make build
+make load_data
+
+## Run it:
+make serve
