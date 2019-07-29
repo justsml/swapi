@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = os.environ.get(
     'SECRET_KEY',
-    'i-acxn5(akgsn!sr4^qgf(^m&*@+g1@u^t@=8s@axc41ml*f=s'
+    'i+acxn5(abcdn!sr4^qgf(^m&*@+g1@u^t@=8s@axc41ml*f=s'
 )
 
 DEBUG = bool(os.environ.get('DEBUG', True))
@@ -48,11 +48,6 @@ ROOT_URLCONF = 'swapi.urls'
 
 WSGI_APPLICATION = 'swapi.wsgi.application'
 
-DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(ssl_require=True)
-# DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-# DATABASES = {'default': dj_database_url.config(engine='django_postgrespool')}
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -68,15 +63,13 @@ USE_L10N = True
 USE_TZ = True
 
 # if not DEBUG:
-#     DATABASES = {'default': dj_database_url.config(engine='django_postgrespool')}
-#     # DATABASES['default'] =  dj_database_url.config()
-#     # DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-
-# DATABASE_POOL_ARGS = {
-#     'max_overflow': 10,
-#     'pool_size': 10,
-#     'recycle': 300
-# }
+DATABASES['default'] =  dj_database_url.config()
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+DATABASE_POOL_ARGS = {
+    'max_overflow': 10,
+    'pool_size': 10,
+    'recycle': 300
+}
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
