@@ -22,7 +22,6 @@ CUSTOM_APPS = (
     'markdown_deux',
     'corsheaders',
     'clear_cache',
-    'corsheaders',
 )
 
 INSTALLED_APPS = (
