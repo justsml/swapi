@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render_to_response, redirect
-from django.views.decorators.csrf import csrf_exempt
+# from django.views.decorators.csrf import csrf_exempt
 from django.core.cache import cache
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -41,7 +41,7 @@ def about(request):
     )
 
 
-@csrf_exempt
+# @csrf_exempt
 def stripe_donation(request):
     if request.method == 'POST':
         # Amount in cents

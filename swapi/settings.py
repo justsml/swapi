@@ -22,6 +22,7 @@ CUSTOM_APPS = (
     'markdown_deux',
     'corsheaders',
     'clear_cache',
+    'corsheaders',
 )
 
 INSTALLED_APPS = (
@@ -34,10 +35,10 @@ INSTALLED_APPS = (
 ) + CUSTOM_APPS
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -156,10 +157,10 @@ else:
 # Cors
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r'^/api/.*$'
-CORS_ALLOW_METHODS = (
-        'GET',
-    )
+# CORS_URLS_REGEX = r'^/api/.*$'
+# CORS_ALLOW_METHODS = (
+#         'GET',
+#     )
 
 # Memcache
 
