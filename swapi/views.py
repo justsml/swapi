@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import os 
 
 from django.shortcuts import render_to_response, redirect
 # from django.views.decorators.csrf import csrf_exempt
@@ -10,22 +11,31 @@ import stripe
 
 from resources.utils import get_resource_stats
 
+from swapi.context_processors import absolute_root_url, export_vars
+
 DEFAULT_HITS = 50000
 
-
 def index(request):
+
+    base_url = cache.get('base_url')
+    if not base_url:
+        base_url = absolute_root_url(request)
+        cache.set('base_url', base_url, 10000)
 
     stripe_key = settings.STRIPE_KEYS['publishable']
     return render_to_response(
         'index.html',
         {
-            "stripe_key": stripe_key
+            "base_url": os.environ.get('BASE_URL', base_url),
+            "stripe_key": stripe_key,
         }
     )
 
 
 def documentation(request):
-    return render_to_response("documentation.html")
+    return render_to_response("documentation.html", {
+            "base_url": os.environ.get('BASE_URL', 'https://swapi.co'),
+        })
 
 
 def about(request):
